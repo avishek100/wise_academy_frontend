@@ -7,7 +7,7 @@ const Hero = () => {
                 {/* Text Content */}
                 <div className="md:w-1/2 space-y-6">
                     <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                        Unlock Your Potential with <span className="text-yellow-300">Wise Academy</span>
+                        Unlock Your Potential with <span className="text-blue-500">Wise Academy</span>
                     </h1>
                     <p className="text-lg md:text-xl text-black">
                         Discover the best learning resources, books, and video lectures to
@@ -16,14 +16,14 @@ const Hero = () => {
                     <div className="space-x-4">
                         <a
                             href="#"
-                            className="bg-yellow-300 text-blue-500 py-3 px-6 rounded-lg font-semibold hover:bg-yellow-400 transition duration-300"
+                            className="bg-blue-500 text-white py-3 px-6 rounded-lg font-bold hover:bg-yellow-200 transition duration-300"
                         >
                             Get Started
                         </a>
                         <a
                             href="#"
-                            className="bg-blue-500 border-2 dark:border-blue-500 py-3 px-6 rounded-lg font-semibold hover:bg-white hover:text-yellow-300
-                             transition duration-300"
+                            className="bg-white text-blue-500 py-3 px-6 rounded-lg font-bold hover:bg-yellow-400 border border-blue-500 transition duration-300"
+
                         >
                             Learn More
                         </a>
