@@ -1,6 +1,12 @@
 import React from "react";
 
-const SignUpPage = () => {
+import { useNavigate } from "react-router-dom";
+
+
+
+
+const Signup = () => {
+
     return (
         <div className="flex h-screen">
             {/* Left Section */}
@@ -92,4 +98,4 @@ const SignUpPage = () => {
     );
 };
 
-export default SignUpPage;
+export default Signup;
