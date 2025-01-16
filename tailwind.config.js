@@ -1,11 +1,15 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"], // Include your project files
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#1E40AF', // Custom colors
+        secondary: '#FACC15',
+      },
+    },
   },
   plugins: [require("daisyui")],
-}
+};
+
+
+

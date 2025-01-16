@@ -72,6 +72,7 @@ const Footer = () => {
             {/* Copyright Notice */}
             <aside>
                 <p>Copyright © {new Date().getFullYear()} - All rights reserved by WISE ACADEMY Pvt Ltd</p>
+
             </aside>
         </footer>
     );

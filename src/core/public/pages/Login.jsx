@@ -1,4 +1,5 @@
 import React from "react";
+import { FaEnvelope, FaLock } from "react-icons/fa"; // Import icons from Font Awesome
 
 const LoginPage = () => {
     return (
@@ -28,20 +29,7 @@ const LoginPage = () => {
                                 placeholder="Email"
                             />
                             <span className="absolute inset-y-0 left-3 flex items-center text-gray-500">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M16 12H3M16 12a4 4 0 110-8 4 4 0 110 8zM16 12l5 5m0 0l-5 5m5-5H3"
-                                    />
-                                </svg>
+                                <FaEnvelope className="h-5 w-5" />
                             </span>
                         </div>
                     </div>
@@ -59,20 +47,7 @@ const LoginPage = () => {
                                 placeholder="Password"
                             />
                             <span className="absolute inset-y-0 left-3 flex items-center text-gray-500">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M12 2C10.346 2 9 3.346 9 5v2m6-3c0 1.654-1.346 3-3 3v2m3-5V5m0 14a2 2 0 11-4 0m4 0H8m5 0v-1m0-2v2m-6-2v-3m6 0v1m0 3v2m0-3v-3"
-                                    />
-                                </svg>
+                                <FaLock className="h-5 w-5" />
                             </span>
                         </div>
                     </div>
