@@ -70,7 +70,7 @@ const Footer = () => {
             </nav>
 
             {/* Copyright Notice */}
-            <aside>
+            <aside className=" text-white p-4">
                 <p>Copyright © {new Date().getFullYear()} - All rights reserved by WISE ACADEMY Pvt Ltd</p>
 
             </aside>

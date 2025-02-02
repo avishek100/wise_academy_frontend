@@ -1,11 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Footer from "./components/Footer.jsx";
 import Navbar from "./components/Navbar";
+
+import Courses from "./core/public/pages/Courses.jsx";
+import Hero from "./core/public/pages/Hero.jsx";
 import Home from "./core/public/pages/Home.jsx";
 import Login from "./core/public/pages/Login.jsx";
 import Signup from "./core/public/pages/Signup.jsx";
-import Footer from "./components/Footer.jsx";
-import Hero from "./core/public/pages/Hero.jsx";
+import Dashboard from "./core/private/AdminDashboard.jsx";
 
 const App = () => {
     return (
@@ -20,6 +23,10 @@ const App = () => {
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/login" element={<Login />} />
+                        <Route path="/admindashboard" element={<Dashboard />} />
+                        <Route path="/addcourses" element={<Courses />} />
+
+
                         {/*<Route path="/signup" element={<Signup />} />*/}
 
                     </Routes>
