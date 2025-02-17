@@ -12,7 +12,7 @@ const LoginPage = ({ setToken }) => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:3000/api/auth/login", { userEmail, password });
+            const res = await axios.post("http://localhost:3000/login", { userEmail, password });
 
             const token = res.data.data.accessToken; // Correct token path
             localStorage.setItem("token", token);
@@ -27,7 +27,7 @@ const LoginPage = ({ setToken }) => {
         <div className="min-h-screen flex">
             {/* Left Section */}
             <div className="w-1/2 bg-white flex flex-col justify-center items-center">
-                <img src="/assets/images/logologin.png" alt="Wise Academy Logo" className="h-45" />
+                <img src="/public/assets/images/logologin.png" alt="Wise Academy Logo" className="h-45" />
             </div>
 
             {/* Right Section */}
