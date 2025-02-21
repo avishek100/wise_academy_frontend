@@ -1,87 +1,149 @@
-import React from "react";
+import DarkMode from "@/DarkMode";
+
+import { Menu, School } from "lucide-react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Button } from "./ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
 
 const Navbar = () => {
-    return (
-        <nav className="bg-blue-500 shadow-md">
-            <div className="container mx-auto px-4 flex justify-between items-center h-16">
-                {/* Left Section: Logo and Navigation Links */}
-                <div className="flex items-center space-x-8">
-                    {/* Logo */}
-                    <div className="flex items-center">
-                        <img
-                            src="src/assets/images/wiseacademy.png"
-                            alt="Logo"
-                            className="h-20 w-20"
-                        />
-                        <span className="ml-2 text-lg font-semibold text-white">
-              Wise Academy
-            </span>
-                    </div>
+  const { user } = useSelector((store) => store.auth);
+  const [logoutUser, { data, isSuccess }] = useLogoutUserMutation();
+  const navigate = useNavigate();
+  const logoutHandler = async () => {
+    await logoutUser();
+  };
 
-                    {/* Navigation Links */}
-                    <div className="hidden md:flex space-x-6">
-                        <a
-                            href="#"
-                            className="text-white font-medium dark:hover:text-blue-500 transition duration-300"
-                        >
-                            Categories
-                        </a>
-                        <a
-                            href="#"
-                            className="text-white font-medium dark:hover:text-blue-500 transition duration-300"
-                        >
-                            Bookmarks
-                        </a>
-                    </div>
-                </div>
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success(data?.message || "User log out.");
+      navigate("/login");
+    }
+  }, [isSuccess]);
 
-                {/* Center Section: Search Bar */}
-                <div className="flex-grow flex justify-center items-center">
-                    <div className="relative w-full max-w-lg">
-                        <input
-                            type="text"
-                            className="bg-gray-100 rounded-lg pr-10 pl-4 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
-                        />
-                        {/* Search Icon */}
-                        <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-              <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-              >
-                <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 17h5l-1.405-1.405a2.032 2.032 0 00-.576-.576L15 17z"
-                />
-              </svg>
-            </span>
-                    </div>
-                </div>
-
-                {/* Right Section: Sign Up and Sign In */}
-                <div className="flex items-center space-x-6">
-                    {/* Sign Up Button */}
-                    <a
-                        href="#"
-                        className="bg-white text-blue-500 font-semibold py-2 px-4 rounded-lg shadow hover:bg-blue-600 hover:text-white transition duration-300"
-                    >
-                        Sign Up
-                    </a>
-                    {/* Sign In Button */}
-                    <a
-                        href="#"
-                        className="bg-white text-blue-500 font-semibold py-2 px-4 rounded-lg shadow hover:bg-blue-600 hover:text-white transition duration-300"
-                    >
-                        Sign In
-                    </a>
-                </div>
+  return (
+    <div className="h-16 dark:bg-[#020817] bg-white border-b dark:border-b-gray-800 border-b-gray-200 fixed top-0 left-0 right-0 duration-300 z-10">
+      {/* Desktop */}
+      <div className="max-w-7xl mx-auto hidden md:flex justify-between items-center gap-10 h-full">
+        <div className="flex items-center gap-2">
+          <School size={"30"} />
+          <Link to="/">
+            <h1 className="hidden md:block font-extrabold text-2xl">
+              Wise-Academy
+            </h1>
+          </Link>
+        </div>
+        {/* User icons and dark mode icon  */}
+        <div className="flex items-center gap-8">
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar>
+                  <AvatarImage
+                    src={user?.photoUrl || "https://github.com/shadcn.png"}
+                    alt="@shadcn"
+                  />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <Link to="wise-academy">Wise Academy</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    {" "}
+                    <Link to="profile">Edit Profile</Link>{" "}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={logoutHandler}>
+                    Log out
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                {user?.role === "instructor" && (
+                  <>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem><Link to="/admin/dashboard">Dashboard</Link></DropdownMenuItem>
+                  </>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div className="flex items-center gap-2">
+              <Button variant="outline" onClick={() => navigate("/login")}>
+                Login
+              </Button>
+              <Button onClick={() => navigate("/login")}>Signup</Button>
             </div>
-        </nav>
-    );
+          )}
+          <DarkMode />
+        </div>
+      </div>
+      {/* Mobile device  */}
+      <div className="flex md:hidden items-center justify-between px-4 h-full">
+        <h1 className="font-extrabold text-2xl">E-learning</h1>
+        <MobileNavbar user={user} />
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;
+
+const MobileNavbar = ({ user }) => {
+  const navigate = useNavigate();
+
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button
+          size="icon"
+          className="rounded-full hover:bg-gray-200"
+          variant="outline"
+        >
+          <Menu />
+        </Button>
+      </SheetTrigger>
+      <SheetContent className="flex flex-col">
+        <SheetHeader className="flex flex-row items-center justify-between mt-2">
+          <SheetTitle> <Link to="/">E-Learning</Link></SheetTitle>
+          <DarkMode />
+        </SheetHeader>
+        <Separator className="mr-2" />
+        <nav className="flex flex-col space-y-4">
+          <Link to="/my-learning">My Learning</Link>
+          <Link to="/profile">Edit Profile</Link>
+          <p>Log out</p>
+        </nav>
+        {user?.role === "instructor" && (
+          <SheetFooter>
+            <SheetClose asChild>
+              <Button type="submit" onClick={() => navigate("/admin/dashboard")}>Dashboard</Button>
+            </SheetClose>
+          </SheetFooter>
+        )}
+      </SheetContent>
+    </Sheet>
+  );
+};
