@@ -1,7 +1,3 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import ReactPlayer from "react-player";
-import { Slider } from "../ui/slider";
-import { Button } from "../ui/button";
 import {
   Maximize,
   Minimize,
@@ -12,6 +8,10 @@ import {
   Volume2,
   VolumeX,
 } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import ReactPlayer from "react-player";
+import { Button } from "../ui/button";
+import { Slider } from "../ui/slider";
 
 function VideoPlayer({
   width = "100%",
@@ -147,9 +147,8 @@ function VideoPlayer({
       />
       {showControls && (
         <div
-          className={`absolute bottom-0 left-0 right-0 bg-gray-800 bg-opacity-75 p-4 transition-opacity duration-300 ${
-            showControls ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute bottom-0 left-0 right-0 bg-gray-800 bg-opacity-75 p-4 transition-opacity duration-300 ${showControls ? "opacity-100" : "opacity-0"
+            }`}
         >
           <Slider
             value={[played * 100]}
