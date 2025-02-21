@@ -1,18 +1,18 @@
-import { Route, Routes } from "react-router-dom";
-import AuthPage from "./pages/auth";
-import RouteGuard from "./components/route-guard";
 import { useContext } from "react";
-import { AuthContext } from "./context/auth-context";
-import InstructorDashboardpage from "./pages/instructor";
+import { Route, Routes } from "react-router-dom";
+import RouteGuard from "./components/route-guard";
 import StudentViewCommonLayout from "./components/student-view/common-layout";
-import StudentHomePage from "./pages/student/home";
-import NotFoundPage from "./pages/not-found";
+import { AuthContext } from "./context/auth-context";
+import AuthPage from "./pages/auth";
+import InstructorDashboardpage from "./pages/instructor";
 import AddNewCoursePage from "./pages/instructor/add-new-course";
-import StudentViewCoursesPage from "./pages/student/courses";
+import NotFoundPage from "./pages/not-found";
 import StudentViewCourseDetailsPage from "./pages/student/course-details";
+import StudentViewCourseProgressPage from "./pages/student/course-progress";
+import StudentViewCoursesPage from "./pages/student/courses";
+import StudentHomePage from "./pages/student/home";
 import PaypalPaymentReturnPage from "./pages/student/payment-return";
 import StudentCoursesPage from "./pages/student/student-courses";
-import StudentViewCourseProgressPage from "./pages/student/course-progress";
 
 function App() {
   const { auth } = useContext(AuthContext);
