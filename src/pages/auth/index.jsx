@@ -17,7 +17,7 @@ function AuthPage() {
   const [activeTab, setActiveTab] = useState("signin");
   const {
     signInFormData,
-    setSignInFormData,
+    setSignInFormData,//
     signUpFormData,
     setSignUpFormData,
     handleRegisterUser,
