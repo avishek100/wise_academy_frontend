@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 function MediaProgressbar({ isMediaUploading, progress }) {
   const [showProgress, setShowProgress] = useState(false);
@@ -49,3 +49,4 @@ function MediaProgressbar({ isMediaUploading, progress }) {
 }
 
 export default MediaProgressbar;
+// 
