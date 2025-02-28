@@ -156,9 +156,8 @@ function CourseCurriculum() {
           ...response?.data.map((item, index) => ({
             videoUrl: item?.url,
             public_id: item?.public_id,
-            title: `Lecture ${
-              cpyCourseCurriculumFormdata.length + (index + 1)
-            }`,
+            title: `Lecture ${cpyCourseCurriculumFormdata.length + (index + 1)
+              }`,
             freePreview: false,
           })),
         ];
@@ -288,3 +287,4 @@ function CourseCurriculum() {
 }
 
 export default CourseCurriculum;
+// 
