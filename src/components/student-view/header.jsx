@@ -16,7 +16,7 @@ function StudentViewCommonHeader() {
   return (
     <header className="flex items-center justify-between p-4 border-b bg-blue-600 relative">
       <div className="flex items-center space-x-4">
-        <Link to="/home" className="flex items-center hover:text-white">
+        <Link to="/home" className="flex items-center hover:text-black">
           <GraduationCap className="h-8 w-8 mr-4 text-white" />
           <span className="font-extrabold md:text-xl text-[14px] text-white">
             Wise Academy
@@ -30,7 +30,7 @@ function StudentViewCommonHeader() {
                 ? null
                 : navigate("/courses");
             }}
-            className="text-[14px] md:text-[16px] font-medium text-white"
+            className="text-[14px] md:text-[16px] font-medium text-blue-600 hover:bg-white"
           >
             Explore Courses
           </Button>

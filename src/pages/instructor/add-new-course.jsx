@@ -82,9 +82,9 @@ function AddNewCoursePage() {
     const response =
       currentEditedCourseId !== null
         ? await updateCourseByIdService(
-          currentEditedCourseId,
-          courseFinalFormData
-        )
+            currentEditedCourseId,
+            courseFinalFormData
+          )
         : await addNewCourseService(courseFinalFormData);
 
     if (response?.success) {
@@ -170,4 +170,3 @@ function AddNewCoursePage() {
 }
 
 export default AddNewCoursePage;
-// 
