@@ -13,9 +13,8 @@ import VideoPlayer from "@/components/video-player";
 import { AuthContext } from "@/context/auth-context";
 import { StudentContext } from "@/context/student-context";
 import {
-  checkCoursePurchaseInfoService,
   createPaymentService,
-  fetchStudentViewCourseDetailsService,
+  fetchStudentViewCourseDetailsService
 } from "@/services";
 import { CheckCircle, Globe, Lock, PlayCircle } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
@@ -133,8 +132,8 @@ function StudentViewCourseDetailsPage() {
   const getIndexOfFreePreviewUrl =
     studentViewCourseDetails !== null
       ? studentViewCourseDetails?.curriculum?.findIndex(
-          (item) => item.freePreview
-        )
+        (item) => item.freePreview
+      )
       : -1;
 
   return (
@@ -192,11 +191,10 @@ function StudentViewCourseDetailsPage() {
               {studentViewCourseDetails?.curriculum?.map(
                 (curriculumItem, index) => (
                   <li
-                    className={`${
-                      curriculumItem?.freePreview
-                        ? "cursor-pointer"
-                        : "cursor-not-allowed"
-                    } flex items-center mb-4`}
+                    className={`${curriculumItem?.freePreview
+                      ? "cursor-pointer"
+                      : "cursor-not-allowed"
+                      } flex items-center mb-4`}
                     onClick={
                       curriculumItem?.freePreview
                         ? () => handleSetFreePreview(curriculumItem)
@@ -223,8 +221,8 @@ function StudentViewCourseDetailsPage() {
                   url={
                     getIndexOfFreePreviewUrl !== -1
                       ? studentViewCourseDetails?.curriculum[
-                          getIndexOfFreePreviewUrl
-                        ].videoUrl
+                        getIndexOfFreePreviewUrl
+                      ].videoUrl
                       : ""
                   }
                   width="450px"
